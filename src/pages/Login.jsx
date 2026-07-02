@@ -17,7 +17,7 @@ const Login = () => {
     const result = login(email, password);
     if (result.success) {
       const user = JSON.parse(localStorage.getItem('jobPortalUser'));
-      navigate(user.role === 'company' ? '/company' : '/user');
+      navigate(user.role === 'employer' || user.role === 'company' ? '/company' : '/user');
     } else {
       setError(result.error);
     }

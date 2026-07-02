@@ -83,7 +83,7 @@ const Navbar = () => {
         <Controls />
         {user ? (
           <>
-            <Link to={user.role === 'employer' ? '/company' : '/user'} style={{ fontWeight: '500', color: 'var(--color-text)' }}>
+            <Link to={user.role === 'employer' || user.role === 'company' ? '/company' : '/user'} style={{ fontWeight: '500', color: 'var(--color-text)' }}>
               {t('dashboard')}
             </Link>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -121,12 +121,10 @@ const Navbar = () => {
           <Controls />
           {user ? (
             <>
-              <Link to={user.role === 'employer' ? '/company' : '/user'} onClick={() => setMobileMenuOpen(false)} style={{ fontWeight: '500', color: 'var(--color-text)' }}>
+              <Link to={user.role === 'employer' || user.role === 'company' ? '/company' : '/user'} onClick={() => setMobileMenuOpen(false)} style={{ fontWeight: '500', color: 'var(--color-text)' }}>
                 {t('dashboard')}
               </Link>
-              <Button variant="ghost" onClick={handleLogout} style={{ padding: '0.5rem', textAlign: 'left' }}>
-                {t('logout')}
-              </Button>
+              <Button variant="secondary" onClick={() => { logout(); setMobileMenuOpen(false); }}>{t('logout')}</Button>
             </>
           ) : (
             <>

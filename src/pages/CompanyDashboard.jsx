@@ -14,7 +14,7 @@ const CompanyDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  if (!user || user.role !== 'employer') {
+  if (!user || (user.role !== 'employer' && user.role !== 'company')) {
     return <Navigate to="/login" />;
   }
 

@@ -19,7 +19,7 @@ const Signup = () => {
     e.preventDefault();
     const result = signup(name, email, password, role);
     if (result.success) {
-      navigate(role === 'company' ? '/company' : '/user');
+      navigate(role === 'employer' || role === 'company' ? '/company' : '/user');
     } else {
       setError(result.error);
     }
@@ -44,8 +44,8 @@ const Signup = () => {
             </Button>
             <Button 
               type="button" 
-              variant={role === 'company' ? 'primary' : 'secondary'} 
-              onClick={() => setRole('company')}
+              variant={role === 'employer' ? 'primary' : 'secondary'} 
+              onClick={() => setRole('employer')}
               style={{ flex: 1 }}
             >
               Employer
@@ -74,7 +74,7 @@ const Signup = () => {
           />
           
           <Button type="submit" variant="primary" style={{ width: '100%', marginTop: '1rem' }}>
-            Sign Up as {role === 'company' ? 'Employer' : 'Job Seeker'}
+            Sign Up as {role === 'employer' ? 'Employer' : 'Job Seeker'}
           </Button>
         </form>
 
